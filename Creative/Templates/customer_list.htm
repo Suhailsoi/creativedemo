@@ -1,0 +1,64 @@
+﻿<!--Stock Control start-->
+  <section id="main-content">
+    <section class="wrapper"> 
+      <!-- Stock Table start-->
+      <div class="row">
+        <div class="col-sm-12">
+          <section class="panel">
+            <header class="panel-heading"> Stock List - Full <span class="tools pull-right"> <a href="javascript:;" class="fa fa-chevron-down"></a> <a href="javascript:;" class="fa fa-times"></a> </span> </header>
+            <div class="row-fluid"><div class="span6">
+                <div id="dynamic-table_length" class="dataTables_length"><label>
+                    <select name="dynamic-table_length" size="1" class="form-control" aria-controls="dynamic-table">
+                        <option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option>
+                        <option value="100">100</option></select> records per page</label></div></div>
+                <div class="span6">
+                    
+
+                </div></div>
+            <div class="panel-body">
+              <div class="adv-table" id="customerListContent">
+                <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    
+                    
+                    <thead>                      
+                    <tr>
+                        <th> Name </th>
+                        <th> Brand </th>
+                        <th> Quantity </th>
+                        <th> Cost </th>
+                        <th> #Action </th>
+                    </tr>
+                        </thead>
+                    <tbody>
+                  {{#each controller.customers}}
+                    <tr {{bindAttr class="this.active:active:normal"}} {{bindAttr id="this.id"}}>
+                        <td>
+                            {{this.firstName}}
+                        </td>
+                        <td>
+                            {{this.brand}}
+                        </td>
+                        <td>
+                            {{this.quantity}}
+                        </td>
+                        <td>
+                            {{this.cost}}
+                        </td>
+                        <td align="center">
+                            <a href="#" class="edit" {{action "edit" on="click" target="view" }} {{bindAttr value="this.id"}}>Edit</a>
+                
+                            <a href="#" class="delete" {{action "remove" on="click" target="view" }} {{bindAttr value="this.id"}}>Delete</a>
+                        </td>
+                    </tr>
+                    {{/each}} 
+                        </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Stock Table end--> 
+    </section>
+  </section>
+  <!--Stock Control end-->
