@@ -1,0 +1,242 @@
+﻿<!--sidebar end-->
+<div>
+    <section class="panel custom_panel">
+        <header class="panel-heading">Stock List - Full <span class="tools pull-right"></span></header>
+        <div class="filters_btn">
+            <button class="btn btn-danger" type="button" id="resetBtn">Reset Filter<i class="fa fa-undo"></i></button>
+            <button class="btn btn-primary" type="button" id="filterBtn"></button>
+        </div>
+    </section>
+</div>
+<!--Stock Control start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div id="filterDiv">
+            <!--Filters start-->
+            <div class="row margin_none">
+
+                <form class="form_add_new" role="form">
+          <div class="filter_box">
+            <h1 class="page-header">Filter Options</h1>
+            <div class="col-lg-6"> 
+              
+              <!-- /.panel -->
+              
+              <div class="form-group">
+                <label>Name</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Brand</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select class="selectpicker">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Stock Type</label>
+                <select class="selectpicker">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Stock ID</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Quantity</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Cost/Unit</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Date Example</label>
+                <div class="input-group date">
+                  <input type="text" placeholder="Select your date" id="dp" class="form-control span2">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span> </div>
+              </div>
+              <div class="form-group">
+                <label>Components</label>
+                <select class="selectpicker">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>{List all Fields}</label>
+                <input class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Image</label>
+                <div class="input-group input-browse"> <span class="input-group-btn"> <span class="btn btn-primary btn-file"> Browse…
+                  <input type="file" multiple="">
+                  </span> </span>
+                  <input type="text" readonly="" class="form-control">
+                </div>
+              </div>
+              <!-- /.panel --> 
+              
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="control-label col-md-3">Field selector</label>
+                <div class="col-md-9">
+                  <select name="my_multi_select1[]" id="my_multi_select1" class="multi-select" multiple="multiple" style="position: absolute; left: -9999px;">
+                    <option>Dallas Cowboys</option>
+                    <option>New York Giants</option>
+                    <option selected="">Philadelphia Eagles</option>
+                    <option selected="">Washington Redskins</option>
+                    <option>Chicago Bears</option>
+                    <option>Detroit Lions</option>
+                    <option>Green Bay Packers</option>
+                    <option>Minnesota Vikings</option>
+                    <option selected="">Atlanta Falcons</option>
+                    <option>Carolina Panthers</option>
+                    <option>New Orleans Saints</option>
+                    <option>Tampa Bay Buccaneers</option>
+                    <option>Arizona Cardinals</option>
+                    <option>St. Louis Rams</option>
+                    <option>San Francisco 49ers</option>
+                    <option>Seattle Seahawks</option>
+                  </select><div class="ms-container" id="ms-my_multi_select1"><div class="ms-selectable"><ul class="ms-list" tabindex="-1"><li class="ms-elem-selectable" id="Dallas_Cowboys-selectable"><span>Dallas Cowboys</span></li><li class="ms-elem-selectable" id="New_York_Giants-selectable"><span>New York Giants</span></li><li selected="" class="ms-elem-selectable ms-selected" id="Philadelphia_Eagles-selectable" style="display: none;"><span>Philadelphia Eagles</span></li><li selected="" class="ms-elem-selectable ms-selected" id="Washington_Redskins-selectable" style="display: none;"><span>Washington Redskins</span></li><li class="ms-elem-selectable" id="Chicago_Bears-selectable"><span>Chicago Bears</span></li><li class="ms-elem-selectable" id="Detroit_Lions-selectable"><span>Detroit Lions</span></li><li class="ms-elem-selectable" id="Green_Bay_Packers-selectable"><span>Green Bay Packers</span></li><li class="ms-elem-selectable" id="Minnesota_Vikings-selectable"><span>Minnesota Vikings</span></li><li selected="" class="ms-elem-selectable ms-selected" id="Atlanta_Falcons-selectable" style="display: none;"><span>Atlanta Falcons</span></li><li class="ms-elem-selectable" id="Carolina_Panthers-selectable"><span>Carolina Panthers</span></li><li class="ms-elem-selectable" id="New_Orleans_Saints-selectable"><span>New Orleans Saints</span></li><li class="ms-elem-selectable" id="Tampa_Bay_Buccaneers-selectable"><span>Tampa Bay Buccaneers</span></li><li class="ms-elem-selectable" id="Arizona_Cardinals-selectable"><span>Arizona Cardinals</span></li><li class="ms-elem-selectable" id="St_Louis_Rams-selectable"><span>St. Louis Rams</span></li><li class="ms-elem-selectable" id="San_Francisco_49ers-selectable"><span>San Francisco 49ers</span></li><li class="ms-elem-selectable" id="Seattle_Seahawks-selectable"><span>Seattle Seahawks</span></li></ul></div><div class="ms-selection"><ul class="ms-list" tabindex="-1"><li class="ms-elem-selection" id="Dallas_Cowboys-selection" style="display: none;"><span>Dallas Cowboys</span></li><li class="ms-elem-selection" id="New_York_Giants-selection" style="display: none;"><span>New York Giants</span></li><li selected="" class="ms-elem-selection ms-selected" id="Philadelphia_Eagles-selection" style=""><span>Philadelphia Eagles</span></li><li selected="" class="ms-elem-selection ms-selected" id="Washington_Redskins-selection" style=""><span>Washington Redskins</span></li><li class="ms-elem-selection" id="Chicago_Bears-selection" style="display: none;"><span>Chicago Bears</span></li><li class="ms-elem-selection" id="Detroit_Lions-selection" style="display: none;"><span>Detroit Lions</span></li><li class="ms-elem-selection" id="Green_Bay_Packers-selection" style="display: none;"><span>Green Bay Packers</span></li><li class="ms-elem-selection" id="Minnesota_Vikings-selection" style="display: none;"><span>Minnesota Vikings</span></li><li selected="" class="ms-elem-selection ms-selected" id="Atlanta_Falcons-selection" style=""><span>Atlanta Falcons</span></li><li class="ms-elem-selection" id="Carolina_Panthers-selection" style="display: none;"><span>Carolina Panthers</span></li><li class="ms-elem-selection" id="New_Orleans_Saints-selection" style="display: none;"><span>New Orleans Saints</span></li><li class="ms-elem-selection" id="Tampa_Bay_Buccaneers-selection" style="display: none;"><span>Tampa Bay Buccaneers</span></li><li class="ms-elem-selection" id="Arizona_Cardinals-selection" style="display: none;"><span>Arizona Cardinals</span></li><li class="ms-elem-selection" id="St_Louis_Rams-selection" style="display: none;"><span>St. Louis Rams</span></li><li class="ms-elem-selection" id="San_Francisco_49ers-selection" style="display: none;"><span>San Francisco 49ers</span></li><li class="ms-elem-selection" id="Seattle_Seahawks-selection" style="display: none;"><span>Seattle Seahawks</span></li></ul></div></div>
+                </div>
+              </div>
+              <div class="form-group custom_grop">
+                <label class="control-label">Save as Favourite</label>
+                <div class="col-md-9">
+                  <div class="iconic-input right"> <i class="fa fa-star-o"></i>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group custom_grop">
+                <label class="control-label" for="inputSuccess">Save as Default</label>
+                <div class="col-lg-8">
+                  <div class="checkbox">
+                    
+                      <input type="checkbox" value="">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="form-group custom_grop_bttn">
+              <label></label>
+              <button  class="btn btn-warning">Operators</button>
+              <button  class="btn btn-info">Apply</button>
+              <button  class="btn btn-default">Cancel</button>
+            </div>
+            </div>
+            <!-- /.col-lg-6 --> 
+          </div>
+        </form>
+            </div>
+        </div>
+        <!-- Filters End -->
+        <div id="stocklistDiv">
+            <!-- Stock Control Table start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel custom_panel">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div id="dynamic-table_length" class="dataTables_length">
+                                    <label>
+                                        <select name="dynamic-table_length" size="1" class="form-control" aria-controls="dynamic-table">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        <p>records per page</p>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <!--<div class="dataTables_filter" id="dynamic-table_filter">
+                      <label>
+                        <input placeholder="Search" type="text" class="form-control" aria-controls="dynamic-table">
+                      </label>
+                    </div>-->
+                                <div class="all_buttons"><a data-toggle="modal" href="#myModal"><i class="fa fa-download"></i></a><a data-toggle="modal" href="#myModalbox2"><i class="fa fa-star-o"></i></a></div>
+                                <!-- <div class="input-group m-bot15"> 
+                      <a href="#"><i class="fa fa-download"></i></a>
+                      
+                    </div>-->
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="adv-table">
+                                <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    
+                    
+                    <thead>                      
+                    <tr>
+                        <th> Name </th>
+                        <th> Brand </th>
+                        <th> Quantity </th>
+                        <th> Cost </th>
+                        <th> #Action </th>
+                    </tr>
+                        </thead>
+                    <tbody>
+                  {{#each controller.customers}}
+                    <tr {{bindAttr class="this.active:active:normal"}} {{bindAttr id="this.id"}}>
+                        <td>
+                            {{this.firstName}}
+                        </td>
+                        <td>
+                            {{this.brand}}
+                        </td>
+                        <td>
+                            {{this.quantity}}
+                        </td>
+                        <td>
+                            {{this.cost}}
+                        </td>
+                        <td align="center">
+                            <a href="#" class="edit" {{action "edit" on="click" target="view" }} {{bindAttr value="this.id"}}>Edit</a>
+                
+                            <a href="#" class="delete" {{action "remove" on="click" target="view" }} {{bindAttr value="this.id"}}>Delete</a>
+                        </td>
+                    </tr>
+                    {{/each}} 
+                        </tbody>
+                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- Stock Control Table end-->
+            <div class="text-right">
+                <ul class="pagination">
+                    <li><a href="#">«</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+</section>

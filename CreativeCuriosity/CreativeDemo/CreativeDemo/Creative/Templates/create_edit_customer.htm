@@ -1,0 +1,164 @@
+﻿<div id="mainForm">
+    <!--Stock Control start-->
+        <section id="main-content">
+            <section class="wrapper">
+                {{view App.MessageView}}
+                <div class="row margin_none">
+                    <h1 class="page-header">Add new stock item</h1>
+                    <form role="form" class="form_add_new">
+                        <div class="col-lg-6">
+
+                            <!-- /.panel -->
+                            
+                            <div class="form-group">
+                                <label>Name</label> 
+                                {{view Ember.TextField valueBinding="controller.currentCustomer.firstName" class="form-control"}}
+                            </div>
+                            <div class="form-group">
+                                <label>Brand</label>
+                                {{view Ember.TextField valueBinding="controller.currentCustomer.Brand" class="form-control"}}
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Stock Type</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Stock ID</label>
+                                {{view Ember.TextField valueBinding="controller.currentCustomer.StockID" class="form-control"}}
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                {{view Ember.TextField valueBinding="controller.currentCustomer.Quantity" class="form-control"}}
+                            </div>
+                            <div class="form-group">
+                                <label>Cost/Unit</label>
+                                {{view Ember.TextField valueBinding="controller.currentCustomer.Cost" class="form-control"}}
+                            </div>
+                            <!--<div class="form-group">
+                                <label>Date Example</label>
+                                <div class='input-group date'>
+                                    <input type='text' class="form-control span2" id="dp" placeholder="Select your date" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>-->
+                            <div class="input-group date form_datetime-component">
+                                            <label>Date Example</label>
+                                              <input type="text" size="16" readonly class="form-control">
+                                                <span class="input-group-btn">
+                                                <button class="btn btn-danger date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                          </div>
+                            <div class="form-group">
+                                <label>Components</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{List all Fields}</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <div class="input-group input-browse">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-file">
+                                            Browse&hellip;
+                                            <input type="file" multiple>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <!-- /.panel -->
+
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Field</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Field</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Field</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Field Type</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Field</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Field</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Field</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="input-group date form_datetime-component">
+                                            <label>Date Example</label>
+                                              <input type="text" size="16" readonly class="form-control">
+                                                <span class="input-group-btn">
+                                                <button class="btn btn-danger date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                          </div>
+                            <div class="form-group">
+                                <label>{List of Field}</label>
+                                <input class="form-control">
+                            </div>
+                            <div class="form-group custm_buttons">
+                                <button class="btn btn-default save_btn" {{action "save" on="click" target="view" }}>Save</button>
+                                <button class="btn btn-default cancel_btn" type="reset">Cancel</button>
+                            </div>
+
+                            <!-- /.panel -->
+                            <!-- /.panel .chat-panel -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </form>
+                </div>
+                <!-- Add Stock End -->
+                </div>
+            </section>
+        </section>
+        <!--Stock Control end-->
