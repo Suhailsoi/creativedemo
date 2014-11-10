@@ -36,7 +36,7 @@
                                           </div>
           <!-- /.panel End -->
           <!-- /.panel -->
-          <div class="form-group">
+          <div class="form-group" id="selectReason">
             <label>Reason</label>
             <select class="selectpicker">
               <option>1</option>
@@ -45,11 +45,12 @@
               <option>4</option>
               <option>5</option>
             </select>
+              <input type="hidden" id="hdnSelectReason" name="hdnSelectReason" value="" />
           </div>
           <!-- /.panel End -->
           <!-- /.panel -->
           <div class="form-group custm_buttons">
-            <button class="btn btn-default save_btn" type="submit">Save</button>
+            <button class="btn btn-default save_btn" {{action "save" on="click" target="view" }}>Save</button>
             <button class="btn btn-default cancel_btn" type="reset">Cancel</button>
           </div>
           <!-- /.panel End -->

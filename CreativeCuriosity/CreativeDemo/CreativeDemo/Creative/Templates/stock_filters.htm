@@ -39,6 +39,7 @@
                   <option>4</option>
                   <option>5</option>
                 </select>
+                  
               </div>
               <div class="form-group">
                 <label>Stock Type</label>
@@ -190,29 +191,50 @@
                     <tr>
                         <th> Name </th>
                         <th> Brand </th>
+                        <th> Category </th>
+                        <th> Stock Type </th>
+                        <th> Stock ID </th>
                         <th> Quantity </th>
-                        <th> Cost </th>
-                        <th> #Action </th>
+                        <th> Cost/Unit </th>
+                        <th> Charge Out </th>
+                        <th> SSA </th>
+                        <th> Action </th>
                     </tr>
                         </thead>
                     <tbody>
                   {{#each controller.customers}}
                     <tr {{bindAttr class="this.active:active:normal"}} {{bindAttr id="this.id"}}>
                         <td>
-                            {{this.firstName}}
+                            {{this.name}}
                         </td>
                         <td>
                             {{this.brand}}
                         </td>
                         <td>
+                            {{this.category}}
+                        </td>
+                        <td>
+                            {{this.stockType}}
+                        </td>
+                        <td>
+                            {{this.stockID}}
+                        </td>
+                        <td>
                             {{this.quantity}}
                         </td>
                         <td>
-                            {{this.cost}}
+                            {{this.cost_Unit}}
+                        </td>
+                        <td>
+                            {{this.chargeOut}}
+                        </td>
+                        <td>
+                            {{this.ssa}}
                         </td>
                         <td align="center">
-                            <a href="#" class="edit" {{action "edit" on="click" target="view" }} {{bindAttr value="this.id"}}>Edit</a>
-                
+                            <a href="#" class="replenishStock" {{action "replenishStock" on="click" target="view" }} {{bindAttr value="this.id"}}>Replenish</a>
+                            <a href="#" class="moveStock" {{action "moveStock" on="click" target="view" }} {{bindAttr value="this.id"}}>Move</a>
+                            <a href="#" class="consumeStock" {{action "consumeStock" on="click" target="view" }} {{bindAttr value="this.id"}}>Consume</a>
                             <a href="#" class="delete" {{action "remove" on="click" target="view" }} {{bindAttr value="this.id"}}>Delete</a>
                         </td>
                     </tr>

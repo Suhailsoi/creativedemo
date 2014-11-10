@@ -386,9 +386,42 @@
                     $('#filterBtn').html('Show Filter <i class="fa fa-glass"></i>');
                 }
             });
+            $("#selectCategory").change(function () {
+                
+                var aa = $("#selectCategory option:selected").text();
+                $('#hdnSelectCategory').val(aa);
+            });
+            $("#selectSType").change(function () {
+                $('#hdnSelectSType').attr('value', $("#selectSType option:selected").text());
+            });
+            $("#selectSsa").change(function () {
+                $('#hdnSelectSsa').attr('value', $("#selectSsa option:selected").text());
+            });
+            $("#selectReason").change(function () {
+                $('#hdnSelectReason').attr('value', $("#selectReason option:selected").text());
+            });
 
-        
-       
+            $("#slider-range-min").slider({
+                range: "min",
+                value: 500,
+                min: 0,
+                step: 10,
+                max: 1000,
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.value);
+                    if (ui.value == 0) {
+                        $("#slider-range-min").slider('value', 1);
+                        $("#amount").val('$1');
+                    }
+                },
+                stop: function (event, ui) {
+                    if (ui.value == 0) {
+                        $("#slider-range-min").slider('value', 1);
+                        $("#amount").val('$1');
+                    }
+                }
+            });
+            $("#amount").val("$" + $("#slider-range-min").slider("value"));
         });
     </script>
    

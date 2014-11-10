@@ -34,11 +34,11 @@
                         message = data;
                     }
                 });
-
             if (xhr.status != 200) { // error
                 message = { errorCode: xhr.status, errorMessage: xhr.statusText };
             }
 
+            
             return message;
         },
         read: function (id) // !id read all
@@ -51,16 +51,16 @@
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify({ 'id': id }),
                     type: 'POST',
+                    
                     async: false,
                     success: function (data) {
                         message = data;
                     }
                 });
-
             if (xhr.status != 200) { // error
                 message = { errorCode: xhr.status, errorMessage: xhr.statusText };
             }
-
+          
             return message;
         },
         remove: function (id) // !id delete all
@@ -99,7 +99,6 @@
                         message = data;
                     }
                 });
-
             if (xhr.status != 200) { // error
                 message = { errorCode: xhr.status, errorMessage: xhr.statusText };
             }
@@ -111,23 +110,24 @@
     // Models
     App.CustomerModel = Ember.Object.extend({
         id: null,
-        firstName: null,
+        name: null,
         lastName: null,
         email: null,
         phone: null,
         active: false,
         quiet: false,
-        Brand: null,
-        Category: null,
-        StockType: null,
-        StockID: null,
-        Quantity: null,
-        Cost: null,
-        Date: null,
+        brand: null,
+        category: null,
+        stockType: null,
+        stockID: null,
+        quantity: null,
+        cost_unit: null,
+        ssa: null,
+        date: null,
         Components: null,
         Image: null,
         random: function () {
-            this.setProperties({ firstName: String.random(), Brand: String.random(), Quantity: String.random(), Cost: String.random(), lastName: String.random(), email: String.random().toLowerCase() + '@gmail.com', phone: '(097) ' + Number.random(3) + '-' + Number.random(4) });
+           // this.setProperties({ firstName: String.random(), lastName: String.random(), email: String.random().toLowerCase() + '@gmail.com', phone: '(097) ' + Number.random(3) + '-' + Number.random(4) });
             return this;
         },
         propertyChanged: function () {
@@ -139,9 +139,9 @@
             catch (e) {
 
             }
-        }.observes("firstName", "Brand", "Category", "StockType", "StockID", "Quantity", "Cost", "Date", "Components", "Image"),
+        }.observes('name', 'brand', 'category', 'stockType', 'stockID', 'quantity', 'cost_unit', ' ssa','date'),
         plain: function () {
-            return this.getProperties("id", "firstName", "Brand", "Category", "StockType", "StockID", "Quantity", "Cost", "Date", "Components", "Image");
+            return this.getProperties("id", 'name', 'brand', 'category', 'stockType', 'stockID', 'quantity', 'cost_unit', ' ssa', 'date');
         }
     });
 
@@ -209,6 +209,7 @@
         update: function (customer) {
             this.set('currentResult', this.store.update(customer.plain()));
             if (!this.currentResult.errorCode) {
+                this.set('currentCustomer', App.CustomerModel.create());
             }
         },
         save: function (customer) {
@@ -234,7 +235,62 @@
             this.set('currentResult',
                 App.ResultModel.create({
                     errorMessage: 'Click Submit to save current Stock.',
-                    data: customer.getProperties("firstName","Brand", "Category", "StockType", "StockID", "Quantity", "Cost", "Date", "Components", "Image") // Keep copy
+                    data: customer.getProperties('name', 'brand', 'category', 'stockType', 'stockID', 'quantity', 'cost_unit', ' ssa','date') // Keep copy
+                }));
+        },
+        moveStock: function (id) {
+           debugger
+           if (this.get('currentCustomer').id != id) { // Rollback
+               
+                this.get('currentCustomer')
+                .setProperties({ active: false })
+                .setProperties(this.get('currentResult').data);
+            }
+            else {
+                return;
+            }
+            var customer = this.read(id);
+            this.set('currentCustomer', customer.set('active', true));
+            this.set('currentResult',
+                App.ResultModel.create({
+                    errorMessage: 'Click Submit to save current Stock.',
+                    data: customer.getProperties("quantity","name", "date", "ssa") // Keep copy
+                }));
+        },
+        replenishStock: function (id) {
+            debugger
+            if (this.get('currentCustomer').id != id) { // Rollback
+                this.get('currentCustomer')
+                .setProperties({ active: false })
+                .setProperties(this.get('currentResult').data);
+            }
+            else {
+                return;
+            }
+            var customer = this.read(id);
+            this.set('currentCustomer', customer.set('active', true));
+            this.set('currentResult',
+                App.ResultModel.create({
+                    errorMessage: 'Click Submit to save current Stock.',
+                    data: customer.getProperties("quantity", "date", "ssa") // Keep copy
+                }));
+        },
+        consumeStock: function (id) {
+            debugger
+            if (this.get('currentCustomer').id != id) { // Rollback
+                this.get('currentCustomer')
+                .setProperties({ active: false })
+                .setProperties(this.get('currentResult').data);
+            }
+            else {
+                return;
+            }
+            var customer = this.read(id);
+            this.set('currentCustomer', customer.set('active', true));
+            this.set('currentResult',
+                App.ResultModel.create({
+                    errorMessage: 'Click Submit to save current Stock.',
+                    data: customer.getProperties("cost_unit", "date") // Keep copy
                 }));
         },
         customers: Ember.ArrayController.create({ content: [] }),
@@ -266,6 +322,8 @@
         },
         save: function (event) {
             this.get('controller').send('save');
+            $('#listview').show();
+            $('#createview').hide();
         },
         random: function () {
             this.get('controller').send('random');
@@ -280,11 +338,41 @@
             this.set('controller', App.applicationController);
         },
         edit: function () {
+            
             var id = $(event.target).attr('value');
             var controller = this.get('controller').send('edit', id);
-            alert("");
             $('#listview').hide();
             $('#createview').show();
+            
+        },
+        moveStock: function () {
+            var id = $(event.target).attr('value');
+            var controller = this.get('controller').send('moveStock', id);
+            $('#movestockview').show();
+            $('#listview').hide();
+            $('#consumestockview').hide();
+            $('#createview').hide();
+            $('#repview').hide();
+        },
+        replenishStock: function () {
+            
+            var id = $(event.target).attr('value');
+            var controller = this.get('controller').send('replenishStock', id);
+            $('#repview').show();
+            $('#listview').hide();
+            $('#consumestockview').hide();            
+            $('#createview').hide();
+            $('#movestockview').hide();
+        },
+        consumeStock: function () {
+            
+            var id = $(event.target).attr('value');
+            var controller = this.get('controller').send('consumeStock', id);
+            $('#consumestockview').show();
+            $('#listview').hide();
+            $('#movestockviews').hide();
+            $('#createview').hide();
+            $('#repview').hide();
         },
         remove: function () {
             var id = $(event.target).attr('value');
@@ -317,14 +405,53 @@
 
     App.ReplenishView = Ember.View.extend({
         template: getView('replenish'),
+
+        init: function () {
+            this._super();
+            this.set('controller', App.applicationController);
+        },
+        save: function (event) {
+            this.get('controller').send('save');
+            $('#movestockview').hide();
+            $('#listview').show();
+            $('#consumestockview').hide();
+            $('#createview').hide();
+            $('#repview').hide();
+        },
         name: "ReplenishView"
     });
     App.MoveStockView = Ember.View.extend({
         template: getView('move_stock'),
+
+        init: function () {
+            this._super();
+            this.set('controller', App.applicationController);
+        },
+        save: function (event) {
+            this.get('controller').send('save');
+            $('#movestockview').hide();
+            $('#listview').show();
+            $('#consumestockview').hide();
+            $('#createview').hide();
+            $('#repview').hide();
+        },
         name: "MoveStockView"
     });
     App.ConsumeStockView = Ember.View.extend({
         template: getView('consume_stock'),
+
+        init: function () {
+            this._super();
+            this.set('controller', App.applicationController);
+        },
+        save: function (event) {
+            this.get('controller').send('save');
+            $('#movestockview').hide();
+            $('#listview').show();
+            $('#consumestockview').hide();
+            $('#createview').hide();
+            $('#repview').hide();
+        },
         name: "ConsumeStockView"
     });
     App.IndexRoute = Ember.Route.extend({

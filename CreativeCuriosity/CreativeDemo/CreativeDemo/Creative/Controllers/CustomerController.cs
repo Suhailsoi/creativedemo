@@ -88,10 +88,17 @@
                     return JsonConvert.SerializeObject(r, _settings);
                 }
 
-                item.FirstName = customer.FirstName;
+                item.Name = customer.Name;
                 item.Brand = customer.Brand;
+                item.Category = customer.Category;
+                item.StockType = customer.StockType;
+                item.StockID = customer.StockID;
                 item.Quantity = customer.Quantity;
-                item.Cost = customer.Cost;
+                item.Cost_Unit = customer.Cost_Unit;
+                item.Components = customer.Components;
+                item.Date = customer.Date;
+                item.Ssa = customer.Ssa;
+                
                 CrudDS<Customer>.Serialize(DateTime.Now);
             }
 

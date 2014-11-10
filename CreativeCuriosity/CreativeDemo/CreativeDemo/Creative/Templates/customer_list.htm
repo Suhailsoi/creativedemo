@@ -22,28 +22,26 @@
                     
                     <thead>                      
                     <tr>
-                        <th> Name </th>
-                        <th> Brand </th>
-                        <th> Quantity </th>
-                        <th> Cost </th>
-                        <th> #Action </th>
-                    </tr>
-                        </thead>
-                    <tbody>
-                  {{#each controller.customers}}
-                    <tr {{bindAttr class="this.active:active:normal"}} {{bindAttr id="this.id"}}>
-                        <td>
-                            {{this.firstName}}
-                        </td>
-                        <td>
-                            {{this.brand}}
-                        </td>
-                        <td>
-                            {{this.quantity}}
-                        </td>
-                        <td>
-                            {{this.cost}}
-                        </td>
+            <th> First name </th>
+            <th> Last name </th>
+            <th> Email </th>
+            <th> Phone </th>
+            <th> #Action </th>
+        </tr>
+        {{#each controller.customers}}
+        <tr {{bindAttr class="this.active:active:normal"}} {{bindAttr id="this.id"}}>
+            <td>
+                {{this.firstName}}
+            </td>
+            <td>
+                {{this.lastName}}
+            </td>
+            <td>
+                {{this.email}}
+            </td>
+            <td>
+                {{this.phone}}
+            </td>
                         <td align="center">
                             <a href="#" class="edit" {{action "edit" on="click" target="view" }} {{bindAttr value="this.id"}}>Edit</a>
                 

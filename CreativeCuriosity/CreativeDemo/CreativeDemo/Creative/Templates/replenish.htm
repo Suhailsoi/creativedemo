@@ -16,13 +16,13 @@
             <!-- /.panel -->
             <div class="form-group">
               <label>Quantity</label>
-              <input class="form-control">
+              {{view Ember.TextField valueBinding="controller.currentCustomer.quantity" class="form-control"}}
             </div>
             <!-- /.panel End --> 
             <!-- /.panel -->
             <div class="input-group date form_datetime-component">
                                             <label>Date Example</label>
-                                              <input type="text" size="16" readonly class="form-control">
+                                              {{view Ember.TextField valueBinding="controller.currentCustomer.date" class="form-control"}}
                                                 <span class="input-group-btn">
                                                 <button class="btn btn-danger date-set" type="button"><i class="fa fa-calendar"></i></button>
                                                 </span>
@@ -31,18 +31,19 @@
             <!-- /.panel -->
             <div class="form-group">
               <label>Stock Storage Area</label>
-              <select class="selectpicker">
+              <select class="selectpicker" id="selectSsa">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
               </select>
+                {{view Ember.TextField type="hidden" valueBinding="controller.currentCustomer.ssa" id="hdnSelectSsa"}}
             </div>
             <!-- /.panel End --> 
             <!-- /.panel -->
             <div class="form-group custm_buttons">
-              <button class="btn btn-default save_btn" type="submit">Save</button>
+              <button class="btn btn-default save_btn" {{action "save" on="click" target="view" }}>Save</button>
               <button class="btn btn-default cancel_btn" type="reset">Cancel</button>
             </div>
             <!-- /.panel End -->
