@@ -1,0 +1,31 @@
+﻿<div id="mainForm">
+
+    <div>
+        <label for="firstName">
+            First name
+        </label><br />
+        {{view Ember.TextField valueBinding="controller.currentCustomer.firstName"}}
+        <a href="#" {{action "random" on="click" target="view" }}>Random new customer</a>
+    </div>
+    <div>
+        <label for="lastName">
+            Last name
+        </label><br />
+        {{view Ember.TextField valueBinding="controller.currentCustomer.lastName"}}
+    </div>
+    <div>
+        <label for="email">
+            Email
+        </label><br />
+        {{view Ember.TextField valueBinding="controller.currentCustomer.email"}}
+    </div>
+    <div>
+        <label for="phone">
+            Phone
+        </label><br />
+        {{view Ember.TextField valueBinding="controller.currentCustomer.phone"}}
+    </div>
+    <p>
+        <button id="submit" {{action "save" on="click" target="view" }}>Submit</button>
+    </p>
+</div>
